@@ -1,24 +1,15 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+const tokens = document.querySelector("#tokens");
+const vm = document.querySelector("#vm");
+const resultado = document.querySelector("#resultado");
+const btn_calcular = document.querySelector("#calcular");
+btn_calcular.addEventListener("click", () => {
+  const qtd_tokens = 1000000;
+  let custo_tokens = Number(tokens.value);
+  let custo_vm = Number(vm.value);
+  let horas = qtd_tokens / custo_tokens / 3600;
+  let res = custo_vm * horas;
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-
-setupCounter(document.querySelector('#counter'))
+  if (custo_tokens.length !== 0 && custo_vm !== 0) {
+    resultado.innerHTML = `O custo é ${res.toFixed(2)}`;
+  }
+});
